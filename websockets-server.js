@@ -1,9 +1,9 @@
-var WebSocket = require('ws');
-var WebSocketServer = WebSocket.Server;
-var port = 3001;
+const WebSocket = require('ws');
+const WebSocketServer = WebSocket.Server;
+let port = 3001;
 
-var ws = new WebSocketServer({
-  port: port
+let ws = new WebSocketServer({
+  port
 });
 
 let messages = [];
