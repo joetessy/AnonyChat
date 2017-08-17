@@ -110,7 +110,7 @@ ul{
   display: block;
 }
 
-.message-username, .timestamp {
+.message-username, .timestamp, .message-message {
   padding-left: 8px;
 }
 

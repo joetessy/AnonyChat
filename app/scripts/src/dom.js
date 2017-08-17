@@ -1,5 +1,10 @@
 import $ from 'jquery';
 
+export function promptForUsername(){
+  let username = prompt('Enter a username: ');
+  return username.toLowerCase();
+}
+
 export class ChatForm {
   constructor(formSel, inputSel){
     this.$form = $(formSel);
@@ -24,6 +29,11 @@ export class ChatList {
     this.username = username;
   }
 
+  randomImg(){
+    return $('<img>', {
+      src: 'https://unsplash.it/100/100/?random'
+    });
+  }
 
   drawMessage({user: u, timestamp: t, message: m}) {
     let $messageRow = $('<li>', {
@@ -47,6 +57,9 @@ export class ChatList {
       text: m
     }));
 
+    let $img = this.randomImg();
+
+    $messageRow.append($img);
     $messageRow.append($message);
     $('ul').append($messageRow);
     $messageRow.get(0).scrollIntoView();
