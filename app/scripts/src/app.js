@@ -1,12 +1,17 @@
 import socket from './ws-client';
 import { ChatForm, ChatList, promptForUsername } from './dom.js';
+import { UserStore } from './storage';
 
 const FORM_SELECTOR = '[data-chat="chat-form"]';
 const INPUT_SELECTOR = '[data-chat="message-input"]';
 const LIST_SELECTOR = '[data-chat="message-list"]';
 
-let username = '';
-username = promptForUsername();
+let userStore = new UserStore('x-anonychat/u');
+let username = userStore.get();
+if (!username) {
+  username = promptForUsername();
+  userStore.set(username);
+}
 
 class ChatApp {
   constructor(){

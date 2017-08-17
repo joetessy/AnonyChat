@@ -2,6 +2,7 @@ import $ from 'jquery';
 
 export function promptForUsername(){
   let username = prompt('Enter a username: ');
+  debugger;
   return username.toLowerCase();
 }
 
