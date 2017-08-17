@@ -1,8 +1,8 @@
 import $ from 'jquery';
+import moment from 'moment';
 
 export function promptForUsername(){
   let username = prompt('Enter a username: ');
-  debugger;
   return username.toLowerCase();
 }
 
@@ -30,6 +30,17 @@ export class ChatList {
     this.username = username;
   }
 
+  init(){
+    this.timer = setInterval(() => {
+      $('[data-time]').each((idx, el) => {
+        let $element = $(element);
+        let timestamp = new Date().setTime($element.attr('data-time'));
+        let ago = moment(timestamp).fromNow();
+        $element.html(ago);
+      });
+    }, 1000);
+  }
+
   randomImg(){
     return $('<img>', {
       src: 'https://unsplash.it/100/100/?random'
@@ -51,7 +62,7 @@ export class ChatList {
     $message.append($('<span>', {
       'class': 'timestamp',
       'data-time': t,
-      text: (new Date(t)).getTime()
+      text: moment(t).fromNow()
     }));
     $message.append($('<span>', {
       'class': 'message-message',
