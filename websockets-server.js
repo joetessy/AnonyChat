@@ -11,8 +11,8 @@ let messages = [];
 console.log('websocket server started');
 
 ws.on('connection', (socket) => {
-  messages.forEach((message) => socket.send(message));
   console.log('client connection established');
+  messages.forEach((message) => socket.send(message));
   socket.on('message', (data) => {
     console.log('message received: ' + data);
     messages.push(data);

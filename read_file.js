@@ -1,6 +1,6 @@
-var extract = require('./extract');
 var fs = require('fs');
 var mime = require('mime');
+var extract = require('./extract');
 
 var handleError = (err, res) => {
   res.writeHead(404);
